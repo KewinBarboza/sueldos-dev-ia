@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { Button } from "@/components/ui/button"
 import { useForm } from "react-hook-form"
+import { useState } from "react"
 
 const formSchema = z.object({
   pais: z.string().min(2).max(50),
@@ -21,6 +22,9 @@ const formSchema = z.object({
 })
 
 export default function Home() {
+  const [generation, setGeneration] = useState()
+  const [isLoading, setIsLoading] = useState(false)
+
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,14 +41,34 @@ export default function Home() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
 
-    console.log(values)
+    try {
+      setIsLoading(true)
+      const result = await fetch('/api/completion', {
+        method: 'POST',
+        body: JSON.stringify({
+          prompt: `Soy un desarrollador ${values.experiencia} de ${values.pais} y voy a trabajar en un proyecto para la
+          creación de ${values.tipo_proyecto} el tiempo seria ${values.tiempo} con el lenguajes ${values.lenguaje.join(',')} y con
+          el framework ${values.framework.join(',')} mi nivel educativo es ${values.nivel_educativo} soy un desarrollador ${values.desarrollador} y mis conocimiento
+          sobre base de datos son de nivel ${values.conocimiento_bd} cuando debería cobrar`,
+        }),
+      })
+
+      const response = await result.json()
+      setGeneration(response.object)
+      console.log(response.object)
+
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
+      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm">
         <Form {...form}>
           <form className="grid w-full items-start gap-6 overflow-auto p-4 pt-0" onSubmit={form.handleSubmit(onSubmit)}>
             <div className="grid gap-3">
@@ -335,6 +359,10 @@ export default function Home() {
             {JSON.stringify(form.getValues(), null, 2)}
           </code>
         </pre>
+
+        {isLoading ? 'Loading...' : <pre>
+          <code>{JSON.stringify(generation, null, 2)}</code>
+        </pre>}
       </div>
     </main>
   )
