@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { Share, Triangle } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
+import { ToggleSelector } from "@/components/ToggleSelector"
 
 const formSchema = z.object({
   pais: z.string().min(2).max(50),
@@ -63,6 +64,7 @@ sobre base de datos son de nivel ${values.conocimiento_bd} cuando debería cobra
       }
 
       const response = await result.json()
+      console.log(response)
       setGeneration(response.object)
     } catch (error) {
       console.log(error)
@@ -133,258 +135,142 @@ sobre base de datos son de nivel ${values.conocimiento_bd} cuando debería cobra
                   </div>
 
                   <div className="grid gap-3 mb-6">
-                    <FormField
-                      control={form.control}
-                      name="lenguaje"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-semibold">Lenguaje</FormLabel>
-                          <FormControl >
-                            <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type="multiple" variant="outline" className="justify-start" >
-                              <ToggleGroupItem value="JavaScript" aria-label="Toggle bold">
-                                JavaScript
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="PHP" aria-label="Toggle italic">
-                                PHP
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Python" aria-label="Toggle underline">
-                                Python
-                              </ToggleGroupItem>
-                            </ToggleGroup>
-                          </FormControl>
-                          <FormDescription>
-                            This is your public display name.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <ToggleSelector control={form.control} description='lenguaje de programación' label='Lenguaje' name='lenguaje' type="multiple">
+                      <ToggleGroupItem value="JavaScript" aria-label="Toggle bold">
+                        JavaScript
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="PHP" aria-label="Toggle italic">
+                        PHP
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Python" aria-label="Toggle underline">
+                        Python
+                      </ToggleGroupItem>
+                    </ToggleSelector>
                   </div>
 
                   <div className="grid gap-3 mb-6">
-                    <FormField
-                      control={form.control}
-                      name="desarrollador"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-semibold">Desarrollador</FormLabel>
-                          <FormControl >
-                            <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type="multiple" variant="outline" className="justify-start" >
-                              <ToggleGroupItem value="BackEnd" aria-label="Toggle bold">
-                                BackEnd
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="FrontEnd" aria-label="Toggle italic">
-                                FrontEnd
-                              </ToggleGroupItem>
-                            </ToggleGroup>
-                          </FormControl>
-                          <FormDescription>
-                            This is your public display name.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <ToggleSelector control={form.control} description='Seleccione el tipo de desarrollador' label='Desarrollador' name='desarrollador' type="multiple">
+                      <ToggleGroupItem value="BackEnd" aria-label="Toggle bold">
+                        BackEnd
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="FrontEnd" aria-label="Toggle italic">
+                        FrontEnd
+                      </ToggleGroupItem>
+                    </ToggleSelector>
                   </div>
 
                   <div className="grid gap-3 mb-6">
-                    <FormField
-                      control={form.control}
-                      name="experiencia"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-semibold">Años de experiencia</FormLabel>
-                          <FormControl >
-                            <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type="single" variant="outline" className="justify-start" >
-                              <ToggleGroupItem value="junior" aria-label="Toggle bold">
-                                Junior 1 -3  años de experiencia
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="mid" aria-label="Toggle italic">
-                                Mid 4-9  años de experiencia
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Senior" aria-label="Toggle italic">
-                                Senior de 10-20 años de experiencia
-                              </ToggleGroupItem>
-                            </ToggleGroup>
-                          </FormControl>
-                          <FormDescription>
-                            This is your public display name.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <ToggleSelector control={form.control} description='Años de experiencia laboral' label='Años de experiencia' name='experiencia' type="single">
+                      <ToggleGroupItem value="junior" aria-label="Toggle bold">
+                        Junior 1 -3  años de experiencia
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="mid" aria-label="Toggle italic">
+                        Mid 4-9  años de experiencia
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Senior" aria-label="Toggle italic">
+                        Senior de 10-20 años de experiencia
+                      </ToggleGroupItem>
+                    </ToggleSelector>
                   </div>
 
                   <div className="grid gap-3 mb-6">
-                    <FormField
-                      control={form.control}
-                      name="conocimiento_bd"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-semibold">NIvel de manejo de base de datos</FormLabel>
-                          <FormControl >
-                            <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type="single" variant="outline" className="justify-start" >
-                              <ToggleGroupItem value="bajo" aria-label="Toggle bold">
-                                Bajo
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="medio" aria-label="Toggle italic">
-                                Medio
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="alto" aria-label="Toggle italic">
-                                Alto
-                              </ToggleGroupItem>
-                            </ToggleGroup>
-                          </FormControl>
-                          <FormDescription>
-                            This is your public display name.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <ToggleSelector control={form.control} description='Selecciona el nivel de conocimiento de Base de datos' label='Nivel de manejo de base de datos' name='conocimiento_bd' type="single">
+                      <ToggleGroupItem value="bajo" aria-label="Toggle bold">
+                        Bajo
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="medio" aria-label="Toggle italic">
+                        Medio
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="alto" aria-label="Toggle italic">
+                        Alto
+                      </ToggleGroupItem>
+                    </ToggleSelector>
                   </div>
 
                   <div className="grid gap-3 mb-6">
-                    <FormField
-                      control={form.control}
-                      name="nivel_educativo"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-semibold">Nivel educativo</FormLabel>
-                          <FormControl >
-                            <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type="single" variant="outline" className="justify-start" >
-                              <ToggleGroupItem value="Bootcamp" aria-label="Toggle bold">
-                                Bootcamp
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Ingeniería" aria-label="Toggle italic">
-                                Ingeniería
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Autodidacta" aria-label="Toggle italic">
-                                Autodidacta
-                              </ToggleGroupItem>
-                            </ToggleGroup>
-                          </FormControl>
-                          <FormDescription>
-                            This is your public display name.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <ToggleSelector control={form.control} description='como aprendiste a programar' label='Nivel educativo' name='nivel_educativo' type="single">
+                      <ToggleGroupItem value="Bootcamp" aria-label="Toggle bold">
+                        Bootcamp
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Ingeniería" aria-label="Toggle italic">
+                        Ingeniería
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Autodidacta" aria-label="Toggle italic">
+                        Autodidacta
+                      </ToggleGroupItem>
+                    </ToggleSelector>
                   </div>
 
                   <div className="grid gap-3 mb-6">
-                    <FormField
-                      control={form.control}
-                      name="framework"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-semibold">Framework</FormLabel>
-                          <FormControl >
-                            <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type="multiple" variant="outline" className="justify-start" >
-                              <ToggleGroupItem value="React" aria-label="Toggle bold">
-                                React
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Svelte" aria-label="Toggle italic">
-                                Svelte
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Vue" aria-label="Toggle italic">
-                                Vue
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Angular" aria-label="Toggle italic">
-                                Angular
-                              </ToggleGroupItem>
-                            </ToggleGroup>
-                          </FormControl>
-                          <FormDescription>
-                            This is your public display name.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <ToggleSelector control={form.control} description='Framework con el cuales vas a trabajar o hacer el proyecto' label='Framework' name='framework' type="multiple">
+                      <ToggleGroupItem value="React" aria-label="Toggle bold">
+                        React
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Svelte" aria-label="Toggle italic">
+                        Svelte
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Vue" aria-label="Toggle italic">
+                        Vue
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Angular" aria-label="Toggle italic">
+                        Angular
+                      </ToggleGroupItem>
+                    </ToggleSelector>
                   </div>
 
                   <div className="grid gap-3 mb-6">
-                    <FormField
-                      control={form.control}
-                      name="tiempo"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-semibold">Tiempo del proyecto</FormLabel>
-                          <FormControl >
-                            <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type="single" variant="outline" className="justify-start" >
-                              <ToggleGroupItem value="1 a 2 semenas" aria-label="Toggle bold">
-                                1 a 2 semanas
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="3 a 7 semenas" aria-label="Toggle bold">
-                                3 a 7 semanas
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="8 a 12 semanas" aria-label="Toggle italic">
-                                8 a 12 semanas
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="mas de 12 semanas" aria-label="Toggle italic">
-                                mas de 12 semanas
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="trabajo fijo" aria-label="Toggle italic">
-                                trabajo fijo
-                              </ToggleGroupItem>
-                            </ToggleGroup>
-                          </FormControl>
-                          <FormDescription>
-                            This is your public display name.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <ToggleSelector control={form.control} description='EL tiempo por el cual vas a estar trabajador con el proyecto' label='Tiempo del proyecto' name='tiempo' type="single">
+                      <ToggleGroupItem value="1 a 2 semenas" aria-label="Toggle bold">
+                        1 a 2 semanas
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="3 a 7 semenas" aria-label="Toggle bold">
+                        3 a 7 semanas
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="8 a 12 semanas" aria-label="Toggle italic">
+                        8 a 12 semanas
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="mas de 12 semanas" aria-label="Toggle italic">
+                        Mas de 12 semanas
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="trabajo fijo" aria-label="Toggle italic">
+                        Trabajo fijo
+                      </ToggleGroupItem>
+                    </ToggleSelector>
                   </div>
 
                   <div className="grid gap-3 mb-6">
-                    <FormField
-                      control={form.control}
-                      name="tipo_proyecto"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="font-semibold">Tipo de proyecto</FormLabel>
-                          <FormControl >
-                            <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type="single" variant="outline" className="justify-start" >
-                              <ToggleGroupItem value="App móvil" aria-label="Toggle bold">
-                                App móvil
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Landing page" aria-label="Toggle bold">
-                                Landing page
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Sistema web" aria-label="Toggle italic">
-                                Sistema web
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Videojuegos" aria-label="Toggle italic">
-                                Videojuegos
-                              </ToggleGroupItem>
-                              <ToggleGroupItem value="Aplicación nativa de Windows/Mac " aria-label="Toggle italic">
-                                Aplicación nativa de Windows/Mac
-                              </ToggleGroupItem>
-                            </ToggleGroup>
-                          </FormControl>
-                          <FormDescription>
-                            This is your public display name.
-                          </FormDescription>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                    <ToggleSelector control={form.control} description='Tipo de aplicativo por el cual vas a estar trabajando' label='Tipo de proyecto' name='tipo_proyecto' type="single">
+                      <ToggleGroupItem value="App móvil" aria-label="Toggle bold">
+                        App móvil
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Landing page" aria-label="Toggle bold">
+                        Landing page
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Sistema web" aria-label="Toggle italic">
+                        Sistema web
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Videojuegos" aria-label="Toggle italic">
+                        Videojuegos
+                      </ToggleGroupItem>
+                      <ToggleGroupItem value="Aplicación nativa de Windows/Mac " aria-label="Toggle italic">
+                        Aplicación nativa de Windows/Mac
+                      </ToggleGroupItem>
+                    </ToggleSelector>
                   </div>
                 </ScrollArea>
                 <div className="border-t rounded-lg py-4 px-10">
-
                   <Button type="submit">Submit</Button>
                 </div>
               </form>
             </Form>
           </div>
           <div className="relative flex h-full min-h-[50vh] flex-col  p-4 lg:col-span-2">
-
+            <pre>
+              <code>
+                {JSON.stringify(form.getValues(), null, 2)}
+              </code>
+            </pre>
+            <hr />
             {isLoading ? 'Loading...' : <pre>
               <code>{JSON.stringify(generation, null, 2)}</code>
             </pre>}
@@ -392,21 +278,5 @@ sobre base de datos son de nivel ${values.conocimiento_bd} cuando debería cobra
         </main>
       </div>
     </div>
-
-
-    /*
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm">
-
-
-        <pre>
-          <code>
-            {JSON.stringify(form.getValues(), null, 2)}
-          </code>
-        </pre>
-
-
-      </div>
-    </main>*/
   )
 }
