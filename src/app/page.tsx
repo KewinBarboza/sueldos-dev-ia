@@ -11,6 +11,7 @@ import { useState } from "react"
 import { Share, Triangle } from "lucide-react"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { ToggleSelector } from "@/components/ToggleSelector"
+import { StepForm } from "@/components/Form/StepForm"
 
 const formSchema = z.object({
   pais: z.string().min(2).max(50),
@@ -92,7 +93,86 @@ sobre base de datos son de nivel ${values.conocimiento_bd} cuando debería cobra
             Share
           </Button>
         </header>
-        <main className="grid flex-1 gap-4 overflow-auto md:grid-cols-2 lg:grid-cols-3">
+
+        <section className="flex justify-center w-full px-4 mx-auto my-8 md:my-12 sm:px-8 md:px-12">
+          <div style={{ width: '100%', display: 'inherit', justifyContent: 'inherit', alignItems: 'inherit', containerType: 'inherit' }}>
+            <div className="sm:border-x-0 max-w-[1114px]">
+              <div className="grid grid-cols-2">
+                <div className="">
+                  <div className="grid grid-cols-12">
+                    <div className="p-5 border-t border-r border-l"></div>
+                    <div className="p-5 border-t"></div>
+                    <div className="p-5 border-t border-l border-dashed"></div>
+                    <div className="p-5 border-t"></div>
+                    <div className="p-5 border-t border-l border-dashed"></div>
+                    <div className="p-5 border-t"></div>
+                    <div className="p-5 border-t border-l border-dashed"></div>
+                    <div className="p-5 border-t"></div>
+                    <div className="p-5 border-t border-l border-dashed"></div>
+                    <div className="p-5 border-t"></div>
+                    <div className="p-5 border-t"></div>
+                    <div className="p-5 border-t border-l"></div>
+                  </div>
+                  <div className="grid grid-cols-12">
+                    <div className="p-5 border-l border-r col-span-1"></div>
+                    <div className="p-5 border-t col-span-10">
+                      <div className="p-2 py-10 text-4xl font-bold tracking-tight sm:text-5xl md:p-8 text-center">
+                        Calcula tu sueldo con IA
+                      </div>
+                    </div>
+                    <div className="p-5 border-l col-span-1"></div>
+                  </div>
+                  <div className="grid grid-cols-12">
+                    <div className="p-5 border-b border-t border-r border-l col-span-1"></div>
+                    <div className="p-5 border-b border-t border-dashed col-span-10">
+                      <div className="text-center max-w-2xl mx-auto text-base tracking-tight text-zinc-500 sm:text-lg lg:text-xl">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, dolore? adipisicing elit. Sit, dolore?
+                      </div>
+                      <Button>Empezar</Button>
+                    </div>
+                    <div className="p-5 border-l border-t border-b col-span-1"></div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 border">
+                  <StepForm />
+                </div>
+              </div>
+              {/* <div className="grid grid-cols-12">
+
+                <div className="p-10 border-t border-l border-b"></div>
+                <div className="p-10 border-t border-l border-b"></div>
+                <div className="p-10 border-t border-l border-b"></div>
+                <div className="p-10 border-t border-dashed border-l border-b"></div>
+                <div className="p-10 border-t border-l border-b"></div>
+                <div className="p-10 border"></div>
+              </div> */}
+              {/* <div className="grid grid-cols-12">
+                <div className="p-10  border-l border-b"></div>
+                <div className="col-span-10 border-dashed border-l border-b ">
+                  <div className="p-2 py-10 text-4xl font-bold tracking-tight sm:text-5xl md:p-8 text-center">
+                    Calcula tu sueldo con IA
+                  </div>
+                </div>
+                <div className="p-10 border-l border-r border-b"></div>
+              </div> */}
+              {/* <div className="grid grid-cols-12">
+                <div className="p-10 border-l border-b"></div>
+                <div className="col-span-10 border-l border-b flex flex-col items-center gap-6 p-10">
+                  <div className="text-center max-w-2xl mx-auto text-base tracking-tight text-zinc-500 sm:text-lg lg:text-xl">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, dolore? adipisicing elit. Sit, dolore?
+                  </div>
+                  <div className="hidden md:flex flex-row items-center justify-center gap-4">
+                    <StepForm />
+                  </div>
+                </div>
+                <div className="p-10 border-dashed border-l border-r border-b"></div>
+              </div> */}
+            </div>
+          </div>
+        </section>
+
+
+        {/* <main className="grid flex-1 gap-4 overflow-auto md:grid-cols-2 lg:grid-cols-3">
           <div className="relative hidden flex-col items-start gap-8 border-r md:flex">
             <Form {...form}>
               <form className="grid w-full items-start gap-6 overflow-auto pt-0" onSubmit={form.handleSubmit(onSubmit)}>
@@ -275,7 +355,8 @@ sobre base de datos son de nivel ${values.conocimiento_bd} cuando debería cobra
               <code>{JSON.stringify(generation, null, 2)}</code>
             </pre>}
           </div>
-        </main>
+        </main> */}
+
       </div>
     </div>
   )
