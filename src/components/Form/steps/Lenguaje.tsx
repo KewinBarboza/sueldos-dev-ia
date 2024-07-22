@@ -14,7 +14,7 @@ const LENGUAJE = [
   { "logo": Logos.Swift, "name": "Swift" },
   { "logo": Logos.Kotlin, "name": "Kotlin" },
   { "logo": Logos.Go, "name": "Go" },
-  { "logo": Logos.Rust, "name": "R" }
+  { "logo": Logos.Rust, "name": "Rust" }
 ]
 
 export const Lenguaje: React.FC = () => {
@@ -25,14 +25,14 @@ export const Lenguaje: React.FC = () => {
       control={control}
       label='Lenguaje'
       description='lenguaje de programación'
-      classNameContainer='gap-4 grid grid-cols-3'
+      classNameContainer='gap-4 grid grid-cols-3 px-4'
       name='lenguaje'
       type="multiple"
     >
       {
         LENGUAJE.map(lenguaje => (
-          <ToggleGroupItem className='flex flex-col h-24 w-28 border-solid border-slate-300' value={lenguaje.name} aria-label={`Toggle ${lenguaje.name}`} key={lenguaje.name.replace('/', '').replace('#', '').replaceAll('+', '')}>
-            <lenguaje.logo />
+          <ToggleGroupItem className='flex flex-col h-24 p-3 border-solid border-slate-300' value={lenguaje.name} aria-label={`Toggle ${lenguaje.name}`} key={lenguaje.name.replace('/', '').replace('#', '').replaceAll('+', '')}>
+            {/* <lenguaje.logo /> */}
             {lenguaje.name}
           </ToggleGroupItem>
         ))

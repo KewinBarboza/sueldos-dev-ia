@@ -20,9 +20,9 @@ export function ToggleSelector({ control, name, children, label, description, ty
       control={control}
       name={name}
       render={({ field }: { field: ControllerRenderProps<FieldValues, string> }) => (
-        <FormItem>
+        <FormItem className='px-4'>
           <FormLabel className="font-semibold">{label}</FormLabel>
-          <FormControl >
+          <FormControl>
             <ScrollArea className='h-96 pr-2 py-3' >
               <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type={type} variant="outline" className={classNameContainer} >
                 {children}
