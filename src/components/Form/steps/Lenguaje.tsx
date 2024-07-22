@@ -1,21 +1,42 @@
 import { useFormContext } from 'react-hook-form'
 import { ToggleSelector } from '@/components/ToggleSelector'
 import { ToggleGroupItem } from '@/components/ui/toggle-group'
+import * as Logos from './../../Icons'
+
+const LENGUAJE = [
+  { "logo": Logos.JavaScript, "name": "JavaScript" },
+  { "logo": Logos.Python, "name": "Python" },
+  { "logo": Logos.Java, "name": "Java" },
+  { "logo": Logos.CMasMas, "name": "C/C++" },
+  { "logo": Logos.CSharp, "name": "C#" },
+  { "logo": Logos.PHP, "name": "PHP" },
+  { "logo": Logos.TypeScript, "name": "TypeScript" },
+  { "logo": Logos.Swift, "name": "Swift" },
+  { "logo": Logos.Kotlin, "name": "Kotlin" },
+  { "logo": Logos.Go, "name": "Go" },
+  { "logo": Logos.Rust, "name": "R" }
+]
 
 export const Lenguaje: React.FC = () => {
   const { control, formState: { errors } } = useFormContext()
 
   return (
-    <ToggleSelector control={control} description='lenguaje de programación' label='Lenguaje' name='lenguaje' type="multiple">
-      <ToggleGroupItem value="JavaScript" aria-label="Toggle bold">
-        JavaScript
-      </ToggleGroupItem>
-      <ToggleGroupItem value="PHP" aria-label="Toggle italic">
-        PHP
-      </ToggleGroupItem>
-      <ToggleGroupItem value="Python" aria-label="Toggle underline">
-        Python
-      </ToggleGroupItem>
+    <ToggleSelector
+      control={control}
+      label='Lenguaje'
+      description='lenguaje de programación'
+      classNameContainer='gap-4 grid grid-cols-3'
+      name='lenguaje'
+      type="multiple"
+    >
+      {
+        LENGUAJE.map(lenguaje => (
+          <ToggleGroupItem className='flex flex-col h-24 w-28 border-solid border-slate-300' value={lenguaje.name} aria-label={`Toggle ${lenguaje.name}`} key={lenguaje.name.replace('/', '').replace('#', '').replaceAll('+', '')}>
+            <lenguaje.logo />
+            {lenguaje.name}
+          </ToggleGroupItem>
+        ))
+      }
     </ToggleSelector>
   )
 }

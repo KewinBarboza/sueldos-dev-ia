@@ -2,6 +2,7 @@ import React from 'react'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './ui/form'
 import { ToggleGroup } from './ui/toggle-group'
 import { Control, ControllerRenderProps, FieldValues } from 'react-hook-form'
+import { ScrollArea } from './ui/scroll-area'
 
 type Props = {
   control?: Control<FieldValues> | undefined | any
@@ -9,10 +10,11 @@ type Props = {
   children: React.ReactNode,
   label: string,
   description: string,
-  type: "multiple" | "single"
+  type: "multiple" | "single",
+  classNameContainer: string
 }
 
-export function ToggleSelector({ control, name, children, label, description, type }: Props) {
+export function ToggleSelector({ control, name, children, label, description, type, classNameContainer }: Props) {
   return (
     <FormField
       control={control}
@@ -21,9 +23,11 @@ export function ToggleSelector({ control, name, children, label, description, ty
         <FormItem>
           <FormLabel className="font-semibold">{label}</FormLabel>
           <FormControl >
-            <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type={type} variant="outline" className="justify-start" >
-              {children}
-            </ToggleGroup>
+            <ScrollArea className='h-96 pr-2 py-3' >
+              <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type={type} variant="outline" className={classNameContainer} >
+                {children}
+              </ToggleGroup>
+            </ScrollArea>
           </FormControl>
           <FormDescription>
             {description}

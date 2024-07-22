@@ -1,44 +1,41 @@
 import { useFormContext } from 'react-hook-form'
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import * as Flags from './../../Icons'
+import { ToggleSelector } from '@/components/ToggleSelector'
+import { ToggleGroupItem } from '@/components/ui/toggle-group'
+
+const COUNTRY = [
+  { "name": "Argentina", "flag": Flags.Argentina },
+  { "name": "Bolivia", "flag": Flags.Bolivia },
+  { "name": "Chile", "flag": Flags.Chile },
+  { "name": "Colombia", "flag": Flags.Colombia },
+  { "name": "Costa Rica", "flag": Flags.CostaRica },
+  { "name": "Ecuador", "flag": Flags.Ecuador },
+  { "name": "El Salvador", "flag": Flags.ElSalvador },
+  { "name": "España", "flag": Flags.Espana },
+  { "name": "Guatemala", "flag": Flags.Guatemala },
+  { "name": "Honduras", "flag": Flags.Honduras },
+  { "name": "México", "flag": Flags.Mexico },
+  { "name": "Nicaragua", "flag": Flags.Nicaragua },
+  { "name": "Panamá", "flag": Flags.Panama },
+  { "name": "Paraguay", "flag": Flags.Paraguay },
+  { "name": "Perú", "flag": Flags.Peru },
+  { "name": "Puerto Rico", "flag": Flags.PuertoRico },
+  { "name": "República Dominicana", "flag": Flags.RepublicaDominicana },
+  { "name": "Uruguay", "flag": Flags.Uruguay },
+  { "name": "Venezuela", "flag": Flags.Venezuela }
+]
 
 export const Country: React.FC = () => {
   const { control, formState: { errors } } = useFormContext()
 
   return (
-    <FormField
-      control={control}
-      name="pais"
-      render={({ field }) => (
-        <FormItem>
-          <FormLabel className="font-semibold">País</FormLabel>
-          <FormControl>
-            <Select onValueChange={field.onChange} defaultValue={field.value}>
-              <SelectTrigger
-                id="model"
-                className="items-start [&_[data-description]]:hidden"
-              >
-                <SelectValue placeholder="Select a model" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="España">
-                  España
-                </SelectItem>
-                <SelectItem value="Colombia">
-                  Colombia
-                </SelectItem>
-                <SelectItem value="Venezuela">
-                  Venezuela
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </FormControl>
-          <FormDescription>
-            This is your public display name.
-          </FormDescription>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
+    <ToggleSelector control={control} description='Seleccione el país' label='País' name='pais' type="single" classNameContainer='gap-4 grid grid-cols-3'>
+      {COUNTRY.map(country => (
+        <ToggleGroupItem className='flex flex-col h-24 border-solid border-slate-300' key={country.name} value={country.name} aria-label={`Toggle ${country.name}`}>
+          <country.flag />
+          {country.name}
+        </ToggleGroupItem>
+      ))}
+    </ToggleSelector>
   )
 }

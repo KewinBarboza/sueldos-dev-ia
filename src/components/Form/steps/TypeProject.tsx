@@ -6,21 +6,28 @@ export const TypeProject: React.FC = () => {
   const { control, formState: { errors } } = useFormContext()
 
   return (
-    <ToggleSelector control={control} description='EL tiempo por el cual vas a estar trabajador con el proyecto' label='Tiempo del proyecto' name='tiempo' type="single">
-      <ToggleGroupItem value="1 a 2 semenas" aria-label="Toggle bold">
-        1 a 2 semanas
+    <ToggleSelector
+      control={control}
+      classNameContainer='gap-4 grid grid-cols-3'
+      label='Tipo de proyecto'
+      description='Tipo de aplicativo por el cual vas a estar trabajando'
+      name='tipo_proyecto'
+      type="single"
+    >
+      <ToggleGroupItem value="App móvil" aria-label="Toggle bold">
+        App móvil
       </ToggleGroupItem>
-      <ToggleGroupItem value="3 a 7 semenas" aria-label="Toggle bold">
-        3 a 7 semanas
+      <ToggleGroupItem value="Landing page" aria-label="Toggle bold">
+        Landing page
       </ToggleGroupItem>
-      <ToggleGroupItem value="8 a 12 semanas" aria-label="Toggle italic">
-        8 a 12 semanas
+      <ToggleGroupItem value="Sistema web" aria-label="Toggle italic">
+        Sistema web
       </ToggleGroupItem>
-      <ToggleGroupItem value="mas de 12 semanas" aria-label="Toggle italic">
-        Mas de 12 semanas
+      <ToggleGroupItem value="Videojuegos" aria-label="Toggle italic">
+        Videojuegos
       </ToggleGroupItem>
-      <ToggleGroupItem value="trabajo fijo" aria-label="Toggle italic">
-        Trabajo fijo
+      <ToggleGroupItem value="Aplicación nativa de Windows/Mac " aria-label="Toggle italic">
+        Aplicación nativa de Windows/Mac
       </ToggleGroupItem>
     </ToggleSelector>
   )
