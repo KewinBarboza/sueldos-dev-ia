@@ -93,7 +93,7 @@ sobre base de datos son de nivel ${values.conocimiento_bd} cuando debería cobra
 
         <section className="flex justify-center w-full h-full px-4 mx-auto my-8 md:my-12 sm:px-8 md:px-12">
           <div style={{ width: '100%', display: 'inherit', justifyContent: 'inherit', alignItems: 'inherit', containerType: 'inherit' }}>
-            <div className="sm:border-x-0 max-w-[1414px]">
+            <div className="sm:border-x-0 max-w-[1414px] max-h-[87dvh]">
               <div className="grid grid-cols-2 h-full">
                 <div className="flex flex-col justify-stretch">
                   <div className="grid grid-cols-12 h-full">
@@ -114,8 +114,7 @@ sobre base de datos son de nivel ${values.conocimiento_bd} cuando debería cobra
                     <div className="p-5 border-slate-300 border-l border-r border-t col-span-1"></div>
                     <div className="p-5 border-slate-300 border-t col-span-10 flex items-center">
                       <div className="p-x-2 py-10 text-4xl font-bold tracking-tight sm:text-5xl md:p-8 text-center">
-                        {/* Calcula tu sueldo con IA */}
-                        Lorem ipsum dolor sit
+                        Calcula tu sueldo con IA
                       </div>
                     </div>
                     <div className="p-5 border-slate-300 border-l border-t col-span-1"></div>

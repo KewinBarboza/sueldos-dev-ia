@@ -7,7 +7,7 @@ export const Developer: React.FC = () => {
   const { control, formState: { errors } } = useFormContext()
 
   return (
-    <ToggleSelector control={control} description='Seleccione el tipo de desarrollador' label='Desarrollador' name='desarrollador' type="multiple" classNameContainer='gap-4 grid grid-cols-2'>
+    <ToggleSelector control={control} description='' label='' name='desarrollador' type="multiple" classNameContainer='gap-4 grid grid-cols-2'>
       <ToggleGroupItem className='flex flex-col h-24 border-solid border-slate-300 py-3' value="BackEnd" aria-label="Toggle BackEnd">
         <Server className='h-48 w-48' strokeWidth={0.75} />
         BackEnd

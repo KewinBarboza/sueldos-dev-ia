@@ -6,20 +6,20 @@ export const ProjectTime: React.FC = () => {
   const { control, formState: { errors } } = useFormContext()
 
   return (
-    <ToggleSelector control={control} description='EL tiempo por el cual vas a estar trabajador con el proyecto' label='Tiempo del proyecto' name='tiempo' type="single">
-      <ToggleGroupItem value="1 a 2 semenas" aria-label="Toggle bold">
+    <ToggleSelector control={control} description='' label='' name='tiempo' type="single" classNameContainer='gap-4 grid grid-cols-2'>
+      <ToggleGroupItem className='flex flex-col h-16 border-solid border-slate-300' value="1 a 2 semanas" aria-label="Toggle 1 a 2 semanas">
         1 a 2 semanas
       </ToggleGroupItem>
-      <ToggleGroupItem value="3 a 7 semenas" aria-label="Toggle bold">
+      <ToggleGroupItem className='flex flex-col h-16 border-solid border-slate-300' value="3 a 7 semanas" aria-label="Toggle 3 a 7 semanas">
         3 a 7 semanas
       </ToggleGroupItem>
-      <ToggleGroupItem value="8 a 12 semanas" aria-label="Toggle italic">
+      <ToggleGroupItem className='flex flex-col h-16 border-solid border-slate-300' value="8 a 12 semanas" aria-label="Toggle 8 a 12 semanas">
         8 a 12 semanas
       </ToggleGroupItem>
-      <ToggleGroupItem value="mas de 12 semanas" aria-label="Toggle italic">
+      <ToggleGroupItem className='flex flex-col h-16 border-solid border-slate-300' value="Mas de 12 semanas" aria-label="Toggle mas de 12 semanas">
         Mas de 12 semanas
       </ToggleGroupItem>
-      <ToggleGroupItem value="trabajo fijo" aria-label="Toggle italic">
+      <ToggleGroupItem className='flex flex-col h-16 border-solid border-slate-300' value="Trabajo fijo" aria-label="Toggle trabajo fijo">
         Trabajo fijo
       </ToggleGroupItem>
     </ToggleSelector>
