@@ -1,90 +1,29 @@
-import React, { useState } from 'react'
-import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
+import { FormProvider } from 'react-hook-form'
 import { Button } from '../ui/button'
-import { Country, Developer, EducationLevel, Experience, Framework, KnowledgeDB, Lenguaje, ProjectTime, TypeProject } from './steps'
+import { steps } from './steps'
 import { MoveLeft, MoveRight } from 'lucide-react'
 import { ScrollArea } from '../ui/scroll-area'
-import { useFormStep } from '@/hook/useFormStep'
-
-interface FormData {
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-}
+import { useFormState } from '@/hook/useFormState'
+import { defaultValues } from './defaultValues'
+import { formSchema } from './schema'
 
 export const StepForm: React.FC = () => {
-  const methods = useForm<FormData>()
-  const { goBackwards, goForwards, currentIndex, isFirstStep, isLastStep } = useFormStep(9)
-  console.log(currentIndex)
-  const steps = [
-    {
-      title: 'País',
-      description: 'Lorem ipsum dolor sit amet.',
-      step: <Country key="country" />,
-    },
-    {
-      title: 'Tipo de desarrollador',
-      description: 'Lorem ipsum dolor sit amet.',
-      step: <Developer key="developer" />,
-    },
-    {
-      title: 'Lenguaje de programación',
-      description: 'Lorem ipsum dolor sit amet.',
-      step: <Lenguaje key="lenguaje" />,
-    },
-    {
-      title: 'Nivel educativo',
-      description: 'Lorem ipsum dolor sit amet.',
-      step: <EducationLevel key="educationLevel" />,
-
-    },
-    {
-      title: 'Experiencia laboral',
-      description: 'Lorem ipsum dolor sit amet.',
-      step: <Experience key="experience" />,
-
-    },
-    {
-      title: 'Framework',
-      description: 'Framework con el cual vas a trabajar o hacer el proyecto',
-      step: <Framework key="framework" />,
-    },
-    {
-      title: 'Conocimiento en base de datos SQL',
-      description: 'Selecciona el nivel de conocimiento de Base de datos',
-      step: <KnowledgeDB key="knowledgeDB" />,
-
-    },
-    {
-      title: 'Tiempo de duración del proyecto',
-      description: 'EL tiempo por el cual vas a estar trabajador con el proyecto',
-      step: <ProjectTime key="projectTime" />,
-
-    },
-    {
-      title: 'Tipo de proyecto',
-      description: 'Lorem ipsum dolor sit amet.',
-      step: <TypeProject key="typeProject" />,
-    }
-  ]
-
-  const onSubmit: SubmitHandler<FormData> = (data) => {
-
-    if (isLastStep) {
-      // Final submission logic here
-      console.log('Form Submitted', data)
-    } else {
-      goForwards()
-    }
-  }
+  const { form, generation, isLoading, currentIndex, isFirstStep, isLastStep, goBackwards, onSubmit } = useFormState({ defaultValues, formSchema })
 
   return (
-    <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)} className='grid grid-rows-12 h-full'>
+    <FormProvider {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='grid grid-rows-12 h-full'>
         <div className='row-span-2 border-b border-slate-300 px-4 flex items-center gap-x-4'>
-          <div className='ring-4 ring-primary p-2 rounded-full aspect-square flex justify-center items-center'>
-            <p>{steps.indexOf(steps[currentIndex]) + 1} / {steps.length}</p>
+          <div className='aspect-square flex justify-center items-center'>
+            <div className="relative size-16">
+              <svg className="size-full -rotate-90" viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="16" fill="none" className="stroke-current text-gray-400 dark:text-neutral-700" strokeWidth="3"></circle>
+                <circle cx="18" cy="18" r="16" fill="none" className="stroke-current text-green-500" strokeWidth="3" strokeDasharray="100" strokeDashoffset={90 - (currentIndex + 1) * 10} strokeLinecap="round"></circle>
+              </svg>
+              <div className="absolute top-1/2 start-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                <p className='text-sm'>{steps.indexOf(steps[currentIndex]) + 1} / {steps.length}</p>
+              </div>
+            </div>
           </div>
           <div>
             <p className='font-semibold text-xl'>{steps[currentIndex].title}</p>
