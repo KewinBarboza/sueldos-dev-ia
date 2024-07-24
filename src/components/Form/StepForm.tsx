@@ -97,7 +97,7 @@ export const StepForm: React.FC = () => {
         <div className='row-span-1 border-t border-slate-300 px-4'>
           <div className="grid grid-cols-2 h-full">
             <div className='flex justify-start items-center'>
-              {isFirstStep === false && <Button size='lg' variant='secondary' onClick={goBackwards}>
+              {isFirstStep === false && <Button type='button' size='lg' variant='secondary' onClick={goBackwards}>
                 <MoveLeft className="mr-2 h-4 w-4" /> Atrás
               </Button>}
             </div>
