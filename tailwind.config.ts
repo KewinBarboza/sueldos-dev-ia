@@ -7,8 +7,18 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
+  animation: {
+    "text-gradient": "text-gradient 1.5s linear infinite"
+  },
+  keyframes: {
+    "text-gradient": {
+      to: {
+        backgroundPosition: "200% center"
+      }
+    }
+  },
   theme: {
     container: {
       center: true,
