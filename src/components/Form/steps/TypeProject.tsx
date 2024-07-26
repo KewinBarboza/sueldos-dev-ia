@@ -9,7 +9,7 @@ export const TypeProject: React.FC = () => {
   return (
     <ToggleSelector
       control={control}
-      classNameContainer='gap-4 grid grid-cols-2'
+      classNameContainer='gap-4 grid grid-cols-3'
       label=''
       description=''
       name='tipo_proyecto'
@@ -33,7 +33,7 @@ export const TypeProject: React.FC = () => {
       </ToggleGroupItem>
       <ToggleGroupItem className='flex flex-col h-24 border-solid border-slate-300 py-3' value="Aplicación nativa de Windows/Mac " aria-label="Toggle Aplicación nativa">
         <AppWindowMac className='h-48 w-48 mb-2' strokeWidth={0.75} />
-        Aplicación nativa de Windows/Mac
+        App nativa de Windows/Mac
       </ToggleGroupItem>
     </ToggleSelector>
   )
