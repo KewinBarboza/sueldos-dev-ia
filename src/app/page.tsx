@@ -7,25 +7,26 @@ export default function Home() {
   return (
     <div className="grid h-screen w-full">
       <div className="flex flex-col">
-        <header className="sticky top-0 z-10 flex h-[57px] items-center gap-1 bg-transparent px-4">
-          <Button variant="outline" size="icon" aria-label="Home">
-            <Triangle className="size-5 fill-foreground" />
-          </Button>
-          <h1 className="text-xl font-semibold">Playground</h1>
 
-          <Button
-            variant="outline"
-            size="sm"
-            className="ml-auto gap-1.5 text-sm"
-          >
-            <Share className="size-3.5" />
-            Share
-          </Button>
-        </header>
 
-        <section className="flex justify-center w-full h-full px-4 mx-auto my-3 md:my-12 sm:px-8 md:px-12">
+        <section className="flex justify-center w-full h-full px-4 mx-auto sm:px-8 md:px-12">
           <div style={{ width: '100%', display: 'inherit', justifyContent: 'inherit', alignItems: 'inherit', containerType: 'inherit' }}>
-            <div className="sm:border-x-0 max-w-[1414px] max-h-[80dvh]">
+            <div className="sm:border-x-0 max-w-[1314px] max-h-[70dvh] mt-3">
+              <header className="sticky top-0 z-10 flex h-[57px] items-center border-slate-300 border-r border-l border-t gap-1 bg-transparent px-4">
+                <Button variant="outline" size="icon" aria-label="Home">
+                  <Triangle className="size-5 fill-foreground" />
+                </Button>
+                <h1 className="text-xl font-semibold">Playground</h1>
+
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="ml-auto gap-1.5 text-sm"
+                >
+                  <Share className="size-3.5" />
+                  Share
+                </Button>
+              </header>
               <div className="grid grid-cols-2 h-full">
                 <div className="flex flex-col justify-stretch">
                   <div className="grid grid-cols-12 h-full">
