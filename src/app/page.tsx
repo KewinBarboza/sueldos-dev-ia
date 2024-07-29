@@ -1,20 +1,18 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { CircleCheckBig, Link, ReceiptIcon, Share, Triangle } from "lucide-react"
+import { Share, Triangle } from "lucide-react"
 
 import { FormStateProvider } from "@/context/FormStateProvider"
 import { CalculateSalary } from "@/components/CalculateSalary"
 
 export default function Home() {
   return (
-    <div className="grid h-screen w-full">
+    <div className="grid min-h-dvh w-full">
       <div className="flex flex-col">
-
-
         <section className="flex justify-center w-full h-full px-4 mx-auto sm:px-8 md:px-12">
           <div style={{ width: '100%', display: 'inherit', justifyContent: 'inherit', alignItems: 'inherit', containerType: 'inherit' }}>
             <div className="sm:border-x-0 max-w-[1314px] max-h-[70dvh] mt-3">
-              <header className="sticky top-0 z-10 flex h-[57px] items-center border-slate-300 border-r border-l border-t gap-1 bg-transparent px-4">
+              <header className="flex h-[57px] items-center border-slate-300 border-r border-l border-t gap-1 bg-transparent px-4">
                 <Button variant="outline" size="icon" aria-label="Home">
                   <Triangle className="size-5 fill-foreground" />
                 </Button>
@@ -29,7 +27,7 @@ export default function Home() {
                   Share
                 </Button>
               </header>
-              <div className="grid grid-cols-2 h-full">
+              <div className="grid grid-cols-2">
                 <div className="flex flex-col justify-stretch">
                   <div className="grid grid-cols-12 h-full">
                     <div className="p-5 border-slate-300 border-r border-t border-l"></div>
