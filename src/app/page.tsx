@@ -1,7 +1,9 @@
 "use client"
 import { Button } from "@/components/ui/button"
-import { Share, Triangle } from "lucide-react"
-import { FormStep } from "@/components/Form/FormStep"
+import { CircleCheckBig, Link, ReceiptIcon, Share, Triangle } from "lucide-react"
+
+import { FormStateProvider } from "@/context/FormStateProvider"
+import { CalculateSalary } from "@/components/CalculateSalary"
 
 export default function Home() {
   return (
@@ -66,30 +68,14 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="border border-slate-300">
-                  <FormStep />
+                  <FormStateProvider>
+                    <CalculateSalary />
+                  </FormStateProvider>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
-
-        {/*
-          <div className="relative flex h-full min-h-[50vh] flex-col  p-4 lg:col-span-2">
-            <pre>
-              <code>
-                {JSON.stringify(form.getValues(), null, 2)}
-              </code>
-            </pre>
-            <hr />
-            {isLoading ? 'Loading...' : <pre>
-              <code>{JSON.stringify(generation, null, 2)}</code>
-            </pre>}
-          </div>
-        </main>
-
-        */}
-
       </div>
     </div>
   )
