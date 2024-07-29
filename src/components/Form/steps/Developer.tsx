@@ -24,7 +24,7 @@ export const Developer: React.FC = () => {
         <Smartphone className='h-48 w-48' strokeWidth={0.75} />
         Movil
       </ToggleGroupItem>
-      <ToggleGroupItem className='flex flex-col h-24 border-solid border-slate-300 py-3' value="Movil" aria-label="Toggle VideoJuegos">
+      <ToggleGroupItem className='flex flex-col h-24 border-solid border-slate-300 py-3' value="VideoJuegos" aria-label="Toggle VideoJuegos">
         <Gamepad2 className='h-48 w-48' strokeWidth={0.75} />
         VideoJuegos
       </ToggleGroupItem>

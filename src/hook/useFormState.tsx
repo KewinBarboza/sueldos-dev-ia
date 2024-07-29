@@ -1,39 +1,28 @@
-import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useFormStep } from './useFormStep'
 import { prompt } from '@/lib/utils'
+import { FormSchema, formSchema } from '@/types/formSchema'
 
-export function useFormState({ formSchema, defaultValues }) {
+export function useFormState() {
   const [generation, setGeneration] = useState()
   const [isLoading, setIsLoading] = useState(false)
   const { goBackwards, goForwards, currentIndex, isFirstStep, isLastStep } = useFormStep(10)
 
+  const form = useForm<FormSchema>({
+    resolver: zodResolver(formSchema[currentIndex]),
+    mode: 'onBlur'
+  })
 
-  const form = useForm()
-
-  // const form = useForm<z.infer<typeof formSchema>>({
-  //   defaultValues,
-  //   resolver: zodResolver(formSchema),
-  // })
-
-  async function onSubmit(values) {
-    console.log(values)
-    // if (isLastStep) {
-    //   // Final submission logic here
-    //   console.log('Form Submitted', data)
-    // } else {
-    //   goForwards()
-    // }
-
+  const onSubmit: SubmitHandler<FormSchema> = async (values) => {
     if (!isLastStep) return goForwards()
 
     try {
       setIsLoading(true)
       const result = await fetch('/api/completion', {
         method: 'POST',
-        body: JSON.stringify({ prompt: prompt(values) }),
+        body: JSON.stringify({ prompt: prompt(form.getValues()) }),
       })
 
       if (!result.ok) {

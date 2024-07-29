@@ -1,7 +1,7 @@
 "use client"
 import { Button } from "@/components/ui/button"
 import { Share, Triangle } from "lucide-react"
-import { StepForm } from "@/components/Form/StepForm"
+import { FormStep } from "@/components/Form/FormStep"
 
 export default function Home() {
   return (
@@ -67,7 +67,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="border border-slate-300">
-                  <StepForm />
+                  <FormStep />
                 </div>
               </div>
             </div>

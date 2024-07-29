@@ -4,11 +4,9 @@ import { steps } from './steps'
 import { MoveLeft, MoveRight } from 'lucide-react'
 import { ScrollArea } from '../ui/scroll-area'
 import { useFormState } from '@/hook/useFormState'
-import { defaultValues } from './defaultValues'
-import { formSchema } from './schema'
 
-export const StepForm: React.FC = () => {
-  const { form, generation, isLoading, currentIndex, isFirstStep, isLastStep, goBackwards, onSubmit } = useFormState({ defaultValues, formSchema })
+export const FormStep: React.FC = () => {
+  const { form, generation, isLoading, currentIndex, isFirstStep, isLastStep, goBackwards, onSubmit } = useFormState()
 
   return (
     <FormProvider {...form}>
@@ -41,7 +39,7 @@ export const StepForm: React.FC = () => {
               </Button>}
             </div>
             <div className='flex justify-end items-center'>
-              <Button type="submit" size="lg">
+              <Button type='submit' size="lg">
                 {isLastStep ? 'Submit' : 'Siguiente'}
                 <MoveRight className="ml-2 h-4 w-4" />
               </Button>

@@ -21,6 +21,7 @@ export function ToggleSelector({ control, name, children, label, description, ty
       render={({ field }: { field: ControllerRenderProps<FieldValues, string> }) => (
         <FormItem>
           <FormLabel className="font-semibold">{label}</FormLabel>
+          <FormMessage className='text-lg text-center bg-red-200 p-2 rounded-lg border border-red-500' />
           <FormControl>
             <ToggleGroup onValueChange={field.onChange} defaultValue={field.value} size={"lg"} type={type} variant="outline" className={classNameContainer} >
               {children}
@@ -29,7 +30,6 @@ export function ToggleSelector({ control, name, children, label, description, ty
           <FormDescription>
             {description}
           </FormDescription>
-          <FormMessage />
         </FormItem>
       )}
     />
