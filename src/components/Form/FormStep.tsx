@@ -6,9 +6,10 @@ import { ScrollArea } from '../ui/scroll-area'
 import { useFormState } from '@/hook/useFormState'
 
 export const FormStep: React.FC = () => {
-  const { form, generation, isLoading, currentIndex, isFirstStep, isLastStep, goBackwards, onSubmit } = useFormState()
+  const { form, currentIndex, isFirstStep, isLastStep, goBackwards, onSubmit } = useFormState()
 
   return (
+
     <FormProvider {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='grid grid-rows-12 h-full'>
         <div className='row-span-2 border-b border-slate-300 px-4 flex items-center gap-x-4'>

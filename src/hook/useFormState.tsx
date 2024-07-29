@@ -1,53 +1,12 @@
-import { useState } from 'react'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { useFormStep } from './useFormStep'
-import { prompt } from '@/lib/utils'
-import { FormSchema, formSchema } from '@/types/formSchema'
+import { FormStateContext } from "@/context/FormStateContext"
+import { useContext } from "react"
 
-export function useFormState() {
-  const [generation, setGeneration] = useState()
-  const [isLoading, setIsLoading] = useState(false)
-  const { goBackwards, goForwards, currentIndex, isFirstStep, isLastStep } = useFormStep(10)
+export const useFormState = () => {
+  const context = useContext(FormStateContext)
 
-  const form = useForm<FormSchema>({
-    resolver: zodResolver(formSchema[currentIndex]),
-    mode: 'onBlur'
-  })
-
-  const onSubmit: SubmitHandler<FormSchema> = async (values) => {
-    if (!isLastStep) return goForwards()
-
-    try {
-      setIsLoading(true)
-      const result = await fetch('/api/completion', {
-        method: 'POST',
-        body: JSON.stringify({ prompt: prompt(form.getValues()) }),
-      })
-
-      if (!result.ok) {
-        //TODO: add component error
-        return
-      }
-
-      const response = await result.json()
-      console.log(response)
-      setGeneration(response.object)
-    } catch (error) {
-      console.log(error)
-    } finally {
-      setIsLoading(false)
-    }
+  if (!context) {
+    throw new Error('useFormState must be used within a FormStateProvider')
   }
 
-  return {
-    isLoading,
-    generation,
-    form,
-    currentIndex,
-    isFirstStep,
-    isLastStep,
-    onSubmit,
-    goBackwards,
-  }
+  return context
 }
