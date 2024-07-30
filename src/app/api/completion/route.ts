@@ -1,9 +1,18 @@
 import { generateObject } from 'ai'
-import { openai, createOpenAI } from '@ai-sdk/openai'
+import { createOpenAI } from '@ai-sdk/openai'
 import { salarySchema } from '@/types/salarySchema'
 
 export async function POST(req: Request) {
   const { prompt }: { prompt: string } = await req.json()
+
+  if (!prompt) {
+    return Response.json(
+      {
+        error: "Ingrese los datos del formulario para continuar",
+        status: 400
+      }
+    )
+  }
 
   const groq = createOpenAI({
     baseURL: 'https://api.groq.com/openai/v1',
@@ -22,6 +31,10 @@ export async function POST(req: Request) {
 
     return Response.json({ object })
   } catch (error) {
-    return Response.json(error)
+    console.log(error)
+    return Response.json({
+      error: "Ah ocurrido un error intente de nuevo.",
+      status: 500
+    })
   }
 }

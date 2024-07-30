@@ -14,12 +14,10 @@ export function useFormStep(initialFormSteps: number) {
     setCurrentIndex((prev) => prev + 1)
   }
 
-  // go to section
   const goToSection = (item: number) => {
     setCurrentIndex(item)
   }
 
-  // update form steps
   const updateFormSteps = (newFormSteps: number) => {
     setFormSteps(newFormSteps)
   }
