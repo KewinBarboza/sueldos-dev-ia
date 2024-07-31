@@ -10,7 +10,7 @@ export const FormStep: React.FC = () => {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='grid grid-rows-12 h-full'>
+      <form onSubmit={form.handleSubmit(onSubmit)} className='grid grid-rows-12'>
         <div className='row-span-2 border-b border-slate-300 px-4 flex items-center gap-x-4'>
           <div className='aspect-square flex justify-center items-center'>
             <div className="relative size-16">
@@ -28,7 +28,7 @@ export const FormStep: React.FC = () => {
             <p>{steps[currentIndex].description}</p>
           </div>
         </div>
-        <ScrollArea className='row-span-9 h-[37rem] px-4'>
+        <ScrollArea className='row-span-9 px-4 overflow-auto min-h-[68dvh] max-h-[68dvh]'>
           {steps[currentIndex].step}
         </ScrollArea>
         <div className='row-span-1 border-t border-slate-300 px-4'>

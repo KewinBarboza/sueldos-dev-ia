@@ -37,6 +37,7 @@ const currencyToLocale: Record<SupportedCurrencies | string, LocaleInfo> = {
   PEN: { code: "es-PE", currency: "PEN" }, // Perú
   UYU: { code: "es-UY", currency: "UYU" }, // Uruguay
   VES: { code: "es-VE", currency: "VES" }, // Venezuela
+  USD: { code: "es-SV", currency: "USD" }, // El Salvador
 }
 
 // Función para obtener el código del país y la moneda

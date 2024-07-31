@@ -1,9 +1,10 @@
 import React from 'react'
 import { Skeleton } from './ui/skeleton'
+import { ScrollArea } from './ui/scroll-area'
 
 export function Loading() {
   return (
-    <div className="flex flex-col space-y-3">
+    <ScrollArea className="flex flex-col space-y-3 px-4 overflow-auto min-h-[90dvh] max-h-[68dvh]">
       <Skeleton className="h-[45px] rounded-none" />
       <div className="space-y-2">
         <Skeleton className="h-4 rounded-none" />
@@ -21,6 +22,6 @@ export function Loading() {
         <Skeleton className="h-[45px] rounded-none" />
         <Skeleton className="h-[45px] rounded-none" />
       </div>
-    </div>
+    </ScrollArea>
   )
 }

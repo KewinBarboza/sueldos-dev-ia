@@ -13,24 +13,24 @@ export function Salary() {
   const formatterCurrency = (code: string, currency: string, salary: number) => new Intl.NumberFormat(code, { style: "currency", currency }).format(salary)
 
   return (
-    <ScrollArea className='row-span-9 h-[47rem]'>
+    <ScrollArea className='overflow-auto min-h-[90dvh] max-h-[68dvh]'>
       {
         minimo || promedio || maximo ?
           <div className="grid grid-cols-3">
             <div className="col-span-3 border-b border-slate-300 py-3 font-semibold text-xl text-center">Recomendación para de tu Salario</div>
 
             <div className="border-slate-300 py-4 text-center border-r border-b">
-              <p className='text-2xl'> {formatterCurrency(localeInfo!.code, localeInfo!.currency, minimo)}</p>
+              <p className='text-2xl'> {formatterCurrency(localeInfo!.code || "", localeInfo!.currency || generation!.moneda, minimo)}</p>
               <span className="text-red-700">Mínimo</span>
             </div>
 
             <div className="border-slate-300 py-4 text-center border-r border-b">
-              <p className='text-2xl'> {formatterCurrency(localeInfo!.code, localeInfo!.currency, promedio)}</p>
+              <p className='text-2xl'> {formatterCurrency(localeInfo!.code || "", localeInfo!.currency || generation!.moneda, promedio)}</p>
               <span className="text-yellow-700">Promedio</span>
             </div>
 
             <div className="border-slate-300 py-4 text-center border-b">
-              <p className='text-2xl'> {formatterCurrency(localeInfo!.code, localeInfo!.currency, maximo)}</p>
+              <p className='text-2xl'> {formatterCurrency(localeInfo!.code || "", localeInfo!.currency || generation!.moneda, maximo)}</p>
               <span className="text-green-700">Máximo</span>
             </div>
           </div>
@@ -49,7 +49,7 @@ export function Salary() {
             <div className="col-span-3 border-b border-l border-slate-300 p-3">
               {generation!.recomendaciones.map((recomendacion, index) => (
                 <p className="flex text-pretty gap-x-2 mb-4" key={index}>
-                  <CircleCheckBig className="text-green-400 mt-1" />
+                  <CircleCheckBig className="text-green-400 mt-1 min-h-5 min-w-5" />
                   {recomendacion}
                 </p>
               ))}
@@ -67,7 +67,7 @@ export function Salary() {
             <div className="col-span-3 border-b border-r border-slate-300 p-3">
               {generation!.calcular.map((calc, index) => (
                 <p className="flex text-pretty gap-x-2 mb-4" key={index}>
-                  <CircleCheckBig className="text-green-400 mt-1" />
+                  <CircleCheckBig className="text-green-400 mt-1 min-h-5 min-w-5" />
                   {calc}
                 </p>
               ))}

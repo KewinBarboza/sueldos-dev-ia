@@ -1,5 +1,5 @@
 import { generateObject } from 'ai'
-import { createOpenAI } from '@ai-sdk/openai'
+import { google } from '@ai-sdk/google'
 import { salarySchema } from '@/types/salarySchema'
 
 export async function POST(req: Request) {
@@ -14,16 +14,10 @@ export async function POST(req: Request) {
     )
   }
 
-  const groq = createOpenAI({
-    baseURL: 'https://api.groq.com/openai/v1',
-    apiKey: process.env.GROQ_API_KEY,
-  })
-
   try {
-
     const { object } = await generateObject({
-      model: groq('llama3-8b-8192'),
-      system: 'has un análisis del mercado de desarrollo web y genera los siguientes datos del salario de un programador según su experiencia y nivel educativo y el proyecto a realizar. salario minimo, promedio y maximo, genera la moneda segun el pais del desarrollador, 5 recomendaciones para que tome en cuenta cuanto deberia cobrar, 5 recomendaciones de que factores deberia tomar en cuenta para calcular el monto a cobrar, recomienda de 1 a 2 paginas web con nombre y url que traten sobre salario dependiendo del pais',
+      model: google('models/gemini-1.5-flash-latest'),
+      system: 'Quiero que realices un análisis exhaustivo del mercado de desarrollo web para calcular y recomendar aspectos del salario de un programador. según su experiencia y nivel educativo y el proyecto a realizar. Calcula salario minimo esperado para un programador con experiencia y nivel educativo especificado. Proporciona el salario promedio en el mercado para el mismo perfil. Indica el salario máximo que un programador puede alcanzar en este mercado. Especifica la moneda según el país del desarrollador. Proporciona 5 recomendaciones para que el programador determine cuánto debería cobrar por sus servicios. Considera factores como habilidades, experiencia, industria, y tipo de proyecto. Ofrece 5 recomendaciones sobre los factores clave que un programador debe tomar en cuenta al calcular el monto a cobrar. Incluye aspectos como complejidad del proyecto, duración, y demandas del cliente. recomienda de 1 a 2 páginas web con nombre y URL que brinden información sobre salarios para programadores dependiendo del país, asegurando que sean recursos confiables y actualizados.',
       prompt,
       temperature: 0.3,
       schema: salarySchema
@@ -31,10 +25,10 @@ export async function POST(req: Request) {
 
     return Response.json({ object })
   } catch (error) {
-    console.log(error)
-    return Response.json({
+    console.log('❌', error)
+    throw new Error(JSON.stringify({
       error: "Ah ocurrido un error intente de nuevo.",
       status: 500
-    })
+    }))
   }
 }
