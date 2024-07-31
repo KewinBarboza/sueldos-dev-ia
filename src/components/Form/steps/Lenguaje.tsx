@@ -32,7 +32,7 @@ export const Lenguaje: React.FC = () => {
       {
         LENGUAJE.map(lenguaje => (
           <ToggleGroupItem className='flex flex-col h-24 p-3 border-solid border-slate-300' value={lenguaje.name} aria-label={`Toggle ${lenguaje.name}`} key={lenguaje.name.replace('/', '').replace('#', '').replaceAll('+', '')}>
-            <Image className='mb-4 mt-2 h-10 w-10 select-none aspect-square' width={40} height={40} src={`/lenguajes/${lenguaje.logo}`} alt={lenguaje.logo} title={lenguaje.logo} />
+            <Image className='mb-4 mt-2 h-10 w-10 select-none aspect-square' width={40} height={40} src={`/lenguajes/${lenguaje.logo}`} alt={lenguaje.name} title={lenguaje.name} />
             {lenguaje.name}
           </ToggleGroupItem>
         ))

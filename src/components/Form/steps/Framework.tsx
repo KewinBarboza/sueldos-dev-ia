@@ -37,7 +37,7 @@ export const Framework: React.FC = () => {
       classNameContainer='gap-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3'>
       {FRAMEWORK.map(framework => (
         <ToggleGroupItem className='flex flex-col h-24 border-solid border-slate-300' key={framework.name} value={framework.name} aria-label={`Toggle ${framework.name}`}>
-          <Image className='mb-4 mt-2 object-contain select-none aspect-square' width={40} height={40} src={`/framework/${framework.logo}`} alt={framework.logo} title={framework.logo} loading='lazy' />
+          <Image className='mb-4 mt-2 object-contain select-none aspect-square' width={40} height={40} src={`/framework/${framework.logo}`} alt={framework.name} title={framework.name} loading='lazy' />
           {framework.name}
         </ToggleGroupItem>
       )

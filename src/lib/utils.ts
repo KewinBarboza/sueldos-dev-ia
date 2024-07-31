@@ -12,13 +12,11 @@ export const prompt = (values: FormSchema) => (`Soy un desarrollador ${values.ex
   el framework ${values.framework.join(',')} mi nivel educativo es ${values.nivel_educativo} soy un desarrollador ${values.desarrollador} y mis conocimiento
   sobre base de datos son de nivel ${values.conocimiento_bd} cuando debería cobrar`)
 
-// Define una interfaz para representar la estructura de datos del país y moneda
 interface LocaleInfo {
   code: string
   currency: string
 }
 
-// Objeto que mapea monedas a información de localización
 const currencyToLocale: Record<SupportedCurrencies | string, LocaleInfo> = {
   ARS: { code: "es-AR", currency: "ARS" }, // Argentina
   BOB: { code: "es-BO", currency: "BOB" }, // Bolivia
@@ -40,7 +38,6 @@ const currencyToLocale: Record<SupportedCurrencies | string, LocaleInfo> = {
   USD: { code: "es-SV", currency: "USD" }, // El Salvador
 }
 
-// Función para obtener el código del país y la moneda
 export function getCountryCode(currency: SupportedCurrencies | string): LocaleInfo | null {
   return currencyToLocale[currency] || null
 }

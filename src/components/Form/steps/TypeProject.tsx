@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form'
 import { ToggleSelector } from '@/components/ToggleSelector'
 import { ToggleGroupItem } from '@/components/ui/toggle-group'
-import { AppWindow, AppWindowMac, Gamepad, LayoutTemplate, PanelsTopLeft, TabletSmartphone } from 'lucide-react'
+import { AppWindowMac, Gamepad, LayoutTemplate, PanelsTopLeft, TabletSmartphone } from 'lucide-react'
 
 export const TypeProject: React.FC = () => {
   const { control, formState: { errors } } = useFormContext()
