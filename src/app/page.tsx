@@ -1,28 +1,20 @@
 "use client"
-import { Button } from "@/components/ui/button"
-import { HandCoins } from "lucide-react"
+
 import { FormStateProvider } from "@/context/FormStateProvider"
 import { CalculateSalary } from "@/components/CalculateSalary"
-import { ButtonReset } from "@/components/ButtonReset"
+import { Navbar } from "@/components/Navbar"
 
 export default function Home() {
   return (
     <FormStateProvider>
-      <div className="grid min-h-dvh w-full">
+      <div className="max-h-dvh w-full grid items-center">
         <div className="flex flex-col">
-          <section className="flex justify-center w-full h-full px-4 mx-auto sm:px-8 md:px-12">
-            <div style={{ width: '100%', display: 'inherit', justifyContent: 'inherit', alignItems: 'inherit', containerType: 'inherit' }}>
-              <div className="sm:border-x-0 max-w-[1314px] max-h-[70dvh] mt-3">
-                <header className="flex h-[57px] items-center border-slate-300 border-r border-l border-t gap-1 bg-transparent px-4">
-                  <Button variant="outline" size="icon" aria-label="Home">
-                    <HandCoins className="size-5 fill-foreground" />
-                  </Button>
-                  <h1 className="text-xl font-semibold">Playground</h1>
-
-                  <ButtonReset />
-                </header>
-                <div className="grid grid-cols-2">
-                  <div className="flex flex-col justify-stretch">
+          <section className="flex justify-center w-full px-4 mx-auto sm:px-8 md:px-12">
+            <div className="max-h-dvh" style={{ width: '100%', display: 'inherit', justifyContent: 'inherit', alignItems: 'inherit', containerType: 'inherit' }}>
+              <div className="max-w-[1214px]  max-h-dvh flex flex-col items-center py-2 ">
+                <Navbar />
+                <div className="grid grid-cols-1 lg:grid-cols-2">
+                  <div className="hidden lg:flex flex-col justify-stretch">
                     <div className="grid grid-cols-12 h-full">
                       <div className="p-5 border-slate-300 border-r border-t border-l"></div>
                       <div className="p-5 border-slate-300 border-t"></div>
@@ -52,10 +44,9 @@ export default function Home() {
                     <div className="grid grid-cols-12 h-full">
                       <div className="p-5 border-slate-300 border-b border-t border-r border-l col-span-1"></div>
                       <div className="p-5 border-slate-300 border-b border-t border-dashed col-span-10 text-center text-pretty">
-                        <div className="text-center max-w-2xl mx-auto text-base tracking-tight text-zinc-500 sm:text-lg lg:text-xl">
+                        <div className="text-center max-w-2xl mx-auto text-base text-pretty px-5 tracking-tight text-zinc-500 sm:text-lg lg:text-xl">
                           Nuestra herramienta de IA te ayuda a determinar tu rango salarial objetivo, considerando factores como tu tecnología, ubicación y nivel de seniority. ¡Toma el control de tu carrera!
                         </div>
-                        <Button className="my-5">Empezar</Button>
                       </div>
                       <div className="p-5 border-slate-300 border-l border-t border-b col-span-1"></div>
                     </div>

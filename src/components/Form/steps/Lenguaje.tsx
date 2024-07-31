@@ -25,7 +25,7 @@ export const Lenguaje: React.FC = () => {
       control={control}
       label=''
       description=''
-      classNameContainer='gap-4 grid grid-cols-3 px-4'
+      classNameContainer='gap-4 grid grid-cols-2 md:grid-cols-3'
       name='lenguaje'
       type="multiple"
     >

@@ -7,7 +7,14 @@ export const KnowledgeDB: React.FC = () => {
   const { control, formState: { errors } } = useFormContext()
 
   return (
-    <ToggleSelector control={control} description='' label='' name='conocimiento_bd' type="single" classNameContainer='gap-4 grid grid-cols-3'>
+    <ToggleSelector
+      control={control}
+      description=''
+      label=''
+      name='conocimiento_bd'
+      type="single"
+      classNameContainer='gap-4 grid grid-cols-1 md:grid-cols-3'
+    >
       <ToggleGroupItem className='flex flex-col h-24 border-solid border-slate-300 py-3' value="bajo" aria-label="Toggle knowledge date base down">
         <Tally1 className='h-48 w-48 mb-2' strokeWidth={0.75} />
         Bajo

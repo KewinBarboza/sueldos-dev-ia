@@ -12,7 +12,7 @@ export const Experience: React.FC = () => {
       label=''
       name='experiencia'
       type="single"
-      classNameContainer='gap-4 grid grid-cols-3'
+      classNameContainer='gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3'
     >
       <ToggleGroupItem className='flex flex-col h-16 border-solid border-slate-300' value="junior" aria-label="Toggle bold">
         1 - 3 años de experiencia

@@ -6,7 +6,14 @@ export const ProjectTime: React.FC = () => {
   const { control, formState: { errors } } = useFormContext()
 
   return (
-    <ToggleSelector control={control} description='' label='' name='tiempo' type="single" classNameContainer='gap-4 grid grid-cols-3'>
+    <ToggleSelector
+      control={control}
+      description=''
+      label=''
+      name='tiempo'
+      type="single"
+      classNameContainer='gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3'
+    >
       <ToggleGroupItem className='flex flex-col h-16 border-solid border-slate-300' value="1 a 2 semanas" aria-label="Toggle 1 a 2 semanas">
         1 a 2 semanas
       </ToggleGroupItem>

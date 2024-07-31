@@ -29,7 +29,7 @@ export const Country: React.FC = () => {
   const { control, formState: { errors } } = useFormContext()
 
   return (
-    <ToggleSelector control={control} description='' label='' name='pais' type="single" classNameContainer='gap-4 grid grid-cols-3'>
+    <ToggleSelector control={control} description='' label='' name='pais' type="single" classNameContainer='gap-4 grid grid-cols-2 md:grid-cols-3'>
       {COUNTRY.map(country => (
         <ToggleGroupItem className='flex flex-col h-24 border-solid border-slate-300' key={country.name} value={country.name} aria-label={`Toggle ${country.name}`}>
           <country.flag />
