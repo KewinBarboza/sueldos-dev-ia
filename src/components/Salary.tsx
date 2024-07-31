@@ -16,7 +16,7 @@ export function Salary() {
     <ScrollArea className='overflow-auto min-h-[90dvh] max-h-[68dvh]'>
       {
         generation.moneda.length > 0 && (
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-3">
             <div className="col-span-3 border-b border-slate-300 py-3 font-semibold text-xl text-center">Recomendación para de tu Salario</div>
 
             <div className="border-slate-300 py-4 text-center border-r border-b">
