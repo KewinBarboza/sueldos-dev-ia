@@ -15,26 +15,44 @@ export function Salary() {
   return (
     <ScrollArea className='overflow-auto min-h-[90dvh] max-h-[68dvh]'>
       {
-        minimo || promedio || maximo ?
+        generation.moneda.length > 0 && (
           <div className="grid grid-cols-3">
             <div className="col-span-3 border-b border-slate-300 py-3 font-semibold text-xl text-center">Recomendación para de tu Salario</div>
 
             <div className="border-slate-300 py-4 text-center border-r border-b">
-              <p className='text-2xl'> {formatterCurrency(localeInfo!.code || "", localeInfo!.currency || generation!.moneda, minimo)}</p>
+              <p className='text-2xl'>
+                {
+                  localeInfo
+                    ? formatterCurrency(localeInfo.code, localeInfo.currency, minimo)
+                    : minimo
+                }
+              </p>
               <span className="text-red-700">Mínimo</span>
             </div>
 
             <div className="border-slate-300 py-4 text-center border-r border-b">
-              <p className='text-2xl'> {formatterCurrency(localeInfo!.code || "", localeInfo!.currency || generation!.moneda, promedio)}</p>
+              <p className='text-2xl'>
+                {
+                  localeInfo
+                    ? formatterCurrency(localeInfo.code, localeInfo.currency, promedio)
+                    : promedio
+                }
+              </p>
               <span className="text-yellow-700">Promedio</span>
             </div>
 
             <div className="border-slate-300 py-4 text-center border-b">
-              <p className='text-2xl'> {formatterCurrency(localeInfo!.code || "", localeInfo!.currency || generation!.moneda, maximo)}</p>
+              <p className='text-2xl'>
+                {
+                  localeInfo
+                    ? formatterCurrency(localeInfo.code, localeInfo.currency, maximo)
+                    : maximo
+                }
+              </p>
               <span className="text-green-700">Máximo</span>
             </div>
           </div>
-          : null
+        )
       }
 
       {
