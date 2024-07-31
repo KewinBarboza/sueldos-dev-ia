@@ -16,3 +16,4 @@ export type SupportedCurrencies =
   | "PEN" // Perú
   | "UYU" // Uruguay
   | "VES" // Venezuela
+  | "USD" // El salvador

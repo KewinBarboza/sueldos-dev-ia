@@ -10,9 +10,9 @@ export const salarySchema = z.object({
   ),
   moneda: z.string(),
   recomendaciones: z.array(z.string()),
-  calcular: z.array(z.string()),
+  calcular: z.array(z.string()).describe('Recomendaciones de como se puede calcular el sueldo'),
   paginas: z.array(z.object({
-    nombre: z.string(),
+    nombre: z.string().describe('Nombre del blog o pagina'),
     url: z.string()
   }))
 })
